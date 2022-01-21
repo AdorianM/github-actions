@@ -6,16 +6,22 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: List Env Variables
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
       - name: List Files
         run: |
           pwd
-          ls
+          ls -a
       - name: Checkout
         uses: actions/checkout@v1
       - name: List Files After Checkout
         run: |
           pwd
-          ls
+          ls -a
       - name: Simple JS Actions
         id: greet
         uses: actions/hello-world-javascript-action@v1.1
